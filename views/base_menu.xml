@@ -1,0 +1,14 @@
+<odoo>
+
+    <menuitem
+        id="digizilla_root_menu"
+        name="Digizilla APP"
+    />
+
+    <menuitem
+        id="digizilla_menu"
+        name="Digizilla"
+        parent="digizilla_root_menu"
+    />
+
+</odoo>
