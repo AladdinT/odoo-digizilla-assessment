@@ -9,6 +9,7 @@
         'views/base_menu.xml',
         'views/member_view.xml',
         'views/tag_view.xml',
+        'reports/digizilla_report.xml',
     ],
     'application' : True,
 

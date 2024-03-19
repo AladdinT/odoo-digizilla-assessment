@@ -1,0 +1,85 @@
+<!-- reports/digizilla_report.xml -->
+<!-- add reports/digizilla_report.xml to manifest-->
+
+<odoo> 
+	<record id="digizilla_member_report" model="ir.actions.report">
+		<field name="name">Digizilla Member Report</field>
+		<field name="model">model.digizilla</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="binding_model_id" ref="model_model_digizilla"></field>
+		<field name="binding_type">report</field>
+		<field name="report_name">digizilla.digizilla_report_template</field>
+		
+		
+		
+
+	</record>
+	<template id="digizilla_report_template">
+		<t t-call="web.html_container">
+			<t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <h1>Digizilla Member Report</h1>
+                    <style>
+                        table { width:100%; border:1px solid #adadad; padding:5px;}
+                        table th { background-color:grey; border:1px solid #adadad; padding:5px; text-align:center;}
+                        table td { border:1px solid #adadad; padding:5px; text-align:center;}
+                    </style>
+                    <table>
+                        <thead>
+                            <th colspan="4">Info</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Name</td>
+                                <td> <t t-esc="o.name"/> </td>
+                            </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td><t t-esc="o.gender"/></td>
+                            </tr>
+                            <tr>
+                                <td>Country</td>
+                                <td><t t-esc="o.country"/></td>
+                            </tr>
+                            <tr>
+                                <td>Joining Date</td>
+                                <td><t t-esc="o.joining_date"/></td>
+                            </tr>
+                            <tr>
+                                <td>Tags</td>
+                                <td> <t t-foreach="o.tag_ids" t-as="tag"> <t t-esc="tag.name" /> <br/> </t> </td>
+                            </tr>
+                            <tr>
+                                <td>Customers</td>
+                                <td> 
+                                    <t t-foreach="o.customer_ids" t-as="customer"> 
+                                        <t t-esc="customer.name" />: <t t-esc="customer.email" /> <br/> <t t-esc="customer.function" /> <br/> 
+                                    </t>
+                                 </td>
+                            </tr>
+                            <tr>
+                                <td>Company</td>
+                                <td><t t-esc="o.company_id.name"/></td>
+                            </tr>
+                        </tbody>
+                    </table>	
+                    <table>
+                        <thead>
+                            <th colspan="2">Additional Info</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Notes</td>
+                                <td><t t-esc="o.notes"/></td>
+                            </tr>
+                            <tr>
+                                <td>Comments</td>
+                                <td><t t-esc="o.comments"/></td>
+                            </tr>
+                        </tbody>
+                    </table>			
+                </t>
+            </t>
+		</t>
+	</template>
+</odoo>
